@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmazoLé Esfoliante Clareador – Adeus às Manchas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --pink:  #E8327A;
+    --teal:  #1BBFB0;
+    --dark:  #0F1A1C;
+    --cream: #FDF6EE;
+    --text:  #1A2728;
+    --muted: #5A6E70;
+    --gold:  #F5C842;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+  /* URGENCY BAR */
+  .urgency-bar {
+    background: var(--pink); color: #fff; text-align: center;
+    padding: 10px 16px; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.04em; position: sticky; top: 0; z-index: 100;
+  }
+  .urgency-bar span { animation: pulse 1.5s ease-in-out infinite; display: inline-block; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1A3035 60%, #0D2A2E 100%);
+    color: #fff; padding: 60px 20px 50px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(27,191,176,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(232,50,122,0.15) 0%, transparent 55%);
+    pointer-events:none;
+  }
+  .hero-badge {
+    display: inline-block; background: var(--teal); color: #fff;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 7vw, 3.2rem); font-weight: 900;
+    line-height: 1.15; max-width: 720px; margin: 0 auto 14px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero h1 strong { color: var(--gold); }
+  .hero-sub { font-size: clamp(1rem, 3vw, 1.18rem); color: rgba(255,255,255,0.78); max-width: 560px; margin: 0 auto 32px; }
+  .hero-img { width: 240px; margin: 0 auto 28px; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  .hero-img img { width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+  .hero-stars { color: var(--gold); font-size: 1.3rem; margin-bottom: 6px; }
+  .hero-trust { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+
+  /* CTA */
+  .btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink) 0%, #C0205E 100%);
+    color: #fff; font-size: 1.08rem; font-weight: 700;
+    padding: 18px 42px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 8px 28px rgba(232,50,122,0.45);
+    transition: transform .2s, box-shadow .2s; letter-spacing: 0.02em;
+    border: none; cursor: pointer;
+  }
+  .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(232,50,122,0.55); }
+  .btn-cta small { display:block; font-size:0.72rem; font-weight:400; opacity:.85; margin-top:3px; }
+
+  /* TRUST BAR */
+  .trust-bar { background: #fff; padding: 22px 20px; border-top: 1px solid rgba(0,0,0,0.07); border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .trust-items { display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+  .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+  .trust-item span { font-size: 1.3rem; }
+
+  /* SECTIONS */
+  .section { padding: 60px 20px; max-width: 860px; margin: 0 auto; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 10px; }
+  .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  .section p { color: var(--muted); font-size: 1.02rem; margin-bottom: 14px; }
+
+  /* MANCHAS GRID */
+  .manchas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 32px; }
+  .mancha-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1.5px solid rgba(27,191,176,0.15); transition: border-color .2s, transform .2s; }
+  .mancha-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+  .mancha-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+  .mancha-card-body { padding: 14px; text-align: center; }
+  .mancha-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+
+  /* PRODUTO DESTAQUE */
+  .produto-destaque { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; margin-top: 32px; }
+  .produto-destaque img { width: 260px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); flex-shrink: 0; }
+  .produto-destaque-text { flex: 1; min-width: 220px; }
+
+  /* BENEFÍCIOS */
+  .beneficios-bg { background: linear-gradient(135deg, var(--dark) 0%, #1A3035 100%); color: #fff; padding: 60px 20px; }
+  .beneficios-inner { max-width: 860px; margin: 0 auto; }
+  .beneficios-inner .section-label { color: var(--teal); }
+  .beneficios-inner h2 { color: #fff; }
+  .beneficios-list { list-style: none; margin-top: 28px; display: grid; gap: 14px; }
+  .beneficios-list li { display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.06); border-radius: 14px; padding: 18px; border: 1px solid rgba(27,191,176,0.18); }
+  .beneficios-list li .ico { width: 42px; height: 42px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .beneficios-list li strong { display: block; font-size: 1rem; margin-bottom: 2px; }
+  .beneficios-list li span { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+
+  /* FÓRMULA */
+  .formula-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 28px; }
+  .formula-card { background: #fff; border-radius: 16px; overflow: hidden; border-top: 4px solid var(--teal); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .formula-card img { width: 100%; height: 130px; object-fit: cover; display: block; }
+  .formula-card-body { padding: 16px; }
+  .formula-card .tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 4px; }
+  .formula-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .formula-card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+  /* DEPOIMENTOS */
+  .depo-bg { background: #F0FAF9; padding: 60px 20px; }
+  .depo-inner { max-width: 860px; margin: 0 auto; }
+  .depo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .depo-img { width: 100%; border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; }
+
+  /* PREÇOS */
+  .precos-bg { background: linear-gradient(135deg, var(--dark) 0%, #1A3035 100%); padding: 70px 20px; color: #fff; text-align: center; }
+  .precos-inner { max-width: 900px; margin: 0 auto; }
+  .precos-inner .section-label { color: var(--teal); }
+  .precos-inner h2 { color: #fff; margin-bottom: 8px; }
+  .precos-inner > p { color: rgba(255,255,255,0.65); margin-bottom: 36px; }
+  .precos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+  .preco-card { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 28px 20px; position: relative; transition: transform .2s; }
+  .preco-card:hover { transform: translateY(-6px); }
+  .preco-card.destaque { background: #fff; border-color: var(--teal); color: var(--text); transform: scale(1.04); }
+  .preco-card.destaque:hover { transform: scale(1.04) translateY(-6px); }
+  .badge-popular { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--teal); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 20px; white-space: nowrap; }
+  .preco-card img { width: 140px; margin: 0 auto 16px; display: block; }
+  .preco-potes { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: .7; margin-bottom: 8px; }
+  .preco-card.destaque .preco-potes { color: var(--teal); opacity:1; }
+  .preco-duracao { font-size: 0.82rem; margin-bottom: 16px; opacity: .6; }
+  .preco-antigo { font-size: 0.85rem; text-decoration: line-through; opacity: .5; margin-bottom: 4px; }
+  .preco-valor { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 4px; }
+  .preco-card.destaque .preco-valor { color: var(--pink); }
+  .preco-parcelas { font-size: 0.8rem; opacity: .65; margin-bottom: 20px; }
+  .preco-card .btn-cta { width: 100%; text-align: center; font-size: 0.92rem; padding: 14px 20px; }
+
+  /* GARANTIA */
+  .garantia { background: var(--cream); padding: 60px 20px; text-align: center; }
+  .garantia-inner { max-width: 580px; margin: 0 auto; }
+  .garantia-icon { font-size: 4rem; margin-bottom: 16px; }
+  .garantia h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+  .garantia p { color: var(--muted); font-size: 0.98rem; }
+
+  /* FAQ */
+  .faq-bg { background: #fff; padding: 60px 20px; }
+  .faq-inner { max-width: 700px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 18px 0; }
+  .faq-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+  .faq-item p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: rgba(255,255,255,0.45); text-align: center; padding: 28px 20px; font-size: 0.78rem; }
+  footer a { color: rgba(255,255,255,0.45); text-decoration: underline; }
+
+  /* STICKY MOBILE */
+  .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, var(--pink) 0%, #C0205E 100%); padding: 14px 20px; text-align: center; z-index: 99; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+  .sticky-cta a { color: #fff; font-weight: 700; font-size: 1rem; text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .manchas-grid { grid-template-columns: repeat(2, 1fr); }
+    .formula-grid { grid-template-columns: 1fr 1fr; }
+    .depo-grid { grid-template-columns: 1fr; }
+    .precos-grid { grid-template-columns: 1fr; }
+    .preco-card.destaque { transform: none; }
+    .produto-destaque img { width: 100%; }
+    .sticky-cta { display: block; }
+    body { padding-bottom: 70px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  🔥 <span>OFERTA LIMITADA</span> — Frete Grátis para Todo o Brasil + Pague na Entrega
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✨ Fórmula Natural da Amazônia</div>
+  <h1>Diga <em>adeus</em> às manchas que te fazem ter <strong>vergonha</strong> do próprio corpo</h1>
+  <p class="hero-sub">O esfoliante clareador AmazoLé trata melasma, axilas, virilhas e foliculite — sem ácidos agressivos, sem arder, com resultado visível em semanas.</p>
+  <div class="hero-img">
+    <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753450778673_3332bf38-3297-4735-853a-1ad21b72957b.png.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="AmazoLé Esfoliante Clareador 200g">
+  </div>
+  <div class="hero-stars">★★★★★</div>
+  <p class="hero-trust">+4.800 mulheres já transformaram sua pele</p>
+  <br><br>
+  <a href="#precos" class="btn-cta">
+    QUERO CLAREAR AGORA
+    <small>Pague só na entrega • Frete 100% Grátis</small>
+  </a>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-items">
+    <div class="trust-item"><span>🚚</span> Frete Grátis</div>
+    <div class="trust-item"><span>💳</span> Pague na Entrega</div>
+    <div class="trust-item"><span>🌿</span> 100% Natural</div>
+    <div class="trust-item"><span>🔒</span> Compra Segura</div>
+    <div class="trust-item"><span>↩️</span> 90 Dias de Garantia</div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="section">
+  <span class="section-label">Você se identifica?</span>
+  <h2>Manchas que roubam sua confiança todos os dias</h2>
+  <p>Você evita usar blusas de alça, roupa de banho ou roupas mais curtas por causa de manchas que não somem com nada que você já tentou?</p>
+  <p>Melasma no rosto, axilas escurecidas, virilhas com manchas pós-depilação, foliculite… são problemas reais que afetam milhões de mulheres — e que têm solução natural.</p>
+  <div class="manchas-grid">
+    <div class="mancha-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753453291401_917b6a423579077ac44bf1a6c1003a7d7e164cmv2.avif.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Axilas Escuras">
+      <div class="mancha-card-body"><h3>😔 Axilas Escuras</h3></div>
+    </div>
+    <div class="mancha-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753453905100_melasma.jpg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Melasma">
+      <div class="mancha-card-body"><h3>😣 Melasma</h3></div>
+    </div>
+    <div class="mancha-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753455280106_imagem-57.webp.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Virilhas Escuras">
+      <div class="mancha-card-body"><h3>😞 Virilhas Pós-Depilação</h3></div>
+    </div>
+    <div class="mancha-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753455381829_20181009-090635-scaled.jpg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Foliculite">
+      <div class="mancha-card-body"><h3>😩 Foliculite</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<div class="beneficios-bg">
+  <div class="beneficios-inner">
+    <span class="section-label">Por que o AmazoLé funciona</span>
+    <h2>O clareador que trata sem agredir</h2>
+    <ul class="beneficios-list">
+      <li>
+        <div class="ico">🌿</div>
+        <div><strong>Clareamento real e progressivo</strong><span>Uniformiza o tom da pele em poucas semanas de uso regular, sem prometer milagre, mas entregando resultado visível.</span></div>
+      </li>
+      <li>
+        <div class="ico">💧</div>
+        <div><strong>Sem ácidos agressivos</strong><span>Fórmula suave que clareia sem arder, descamar ou irritar. Ideal para pele sensível.</span></div>
+      </li>
+      <li>
+        <div class="ico">🌺</div>
+        <div><strong>Poder da floresta amazônica</strong><span>O extrato de Mulateiro, planta nativa da Amazônia, tem alto poder cicatrizante e uniformizador comprovado.</span></div>
+      </li>
+      <li>
+        <div class="ico">✅</div>
+        <div><strong>Sem efeito rebote</strong><span>Clareia de forma natural e duradoura. O resultado se mantém com o uso contínuo.</span></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- FÓRMULA -->
+<section class="section">
+  <span class="section-label">Ingredientes ativos</span>
+  <h2>Fórmula exclusiva com ingredientes poderosos</h2>
+  <p>Cada ingrediente foi escolhido para potencializar o clareamento de forma natural e segura.</p>
+  <div class="formula-grid">
+    <div class="formula-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1725145041592_esclusivo-1.webp.webp?alt=media&token=vtk_74Itjo93fhZg58rgDfsqK6gdjhG2" alt="Mulateiro">
+      <div class="formula-card-body">
+        <span class="tag">Da Amazônia</span>
+        <h3>🌳 Extrato de Mulateiro</h3>
+        <p>Planta com alto poder cicatrizante e antioxidante. Uniformiza o tom e combate manchas na raiz.</p>
+      </div>
+    </div>
+    <div class="formula-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1725146210589_esclusivo-2.webp.webp?alt=media&token=vtk_74Itjo93fhZg58rgDfsqK6gdjhG2" alt="Dolomita">
+      <div class="formula-card-body">
+        <span class="tag">Mineral</span>
+        <h3>🪨 Dolomita</h3>
+        <p>Rico em cálcio e magnésio. Estimula a regeneração da pele e potencializa o clareamento de manchas.</p>
+      </div>
+    </div>
+    <div class="formula-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1725146219586_esclusivo-3.webp.webp?alt=media&token=vtk_74Itjo93fhZg58rgDfsqK6gdjhG2" alt="Óleo de Melaleuca">
+      <div class="formula-card-body">
+        <span class="tag">Antibacteriano</span>
+        <h3>💛 Óleo de Melaleuca</h3>
+        <p>Combate bactérias e inflamações da foliculite, mantendo a pele limpa e saudável.</p>
+      </div>
+    </div>
+    <div class="formula-card">
+      <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1725146226587_esclusivo-4.webp.webp?alt=media&token=vtk_74Itjo93fhZg58rgDfsqK6gdjhG2" alt="Argila Branca">
+      <div class="formula-card-body">
+        <span class="tag">Suavizante</span>
+        <h3>🤍 Argila Branca</h3>
+        <p>Suaviza, clareia naturalmente e controla a oleosidade sem agredir nem ressecar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<div class="depo-bg">
+  <div class="depo-inner">
+    <span class="section-label">Resultados reais</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.2rem);">Mulheres que recuperaram a confiança</h2>
+    <p style="color:var(--muted);margin-top:8px;">Depoimentos reais de clientes verificadas</p>
+    <div class="depo-grid" style="margin-top:28px;">
+      <img class="depo-img" src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753457046701_whatsapp-image-2025-07-08-at-184606.jpeg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Depoimento 1">
+      <img class="depo-img" src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753457039382_whatsapp-image-2025-07-08-at-184606-1.jpeg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Depoimento 2">
+      <img class="depo-img" src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753461725177_whatsapp-image-2023-12-28-at-023423.jpeg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Depoimento 3">
+      <img class="depo-img" src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753461893106_whatsapp-image-2025-02-18-at-112958-1.jpeg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Depoimento 4">
+      <img class="depo-img" src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753461900478_whatsapp-image-2023-12-26-at-023421.jpeg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Depoimento 5">
+      <img class="depo-img" src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1753461922224_whatsapp-image-2025-07-25-at-121755.jpeg.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="Depoimento 6">
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="#precos" class="btn-cta">QUERO O MEU TAMBÉM<small>Pague só na entrega • Frete Grátis</small></a>
+    </div>
+  </div>
+</div>
+
+<!-- PREÇOS -->
+<div class="precos-bg" id="precos">
+  <div class="precos-inner">
+    <span class="section-label">Escolha seu tratamento</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.4rem);">Quanto mais tempo de tratamento,<br>melhores os resultados</h2>
+    <p>Frete Grátis + Pague na Entrega em todos os kits</p>
+    <div class="precos-grid">
+      <div class="preco-card">
+        <div class="preco-potes">1 Pote</div>
+        <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1755874050096_design-sem-nome-79.png.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="1 pote AmazoLé">
+        <div class="preco-duracao">Tratamento 30 dias</div>
+        <div class="preco-antigo">De R$189,99</div>
+        <div class="preco-valor">R$137,00</div>
+        <div class="preco-parcelas">ou 3x sem juros</div>
+        <a href="https://pay.braip.co/checkout/plazdlvl/che9vjep" class="btn-cta">COMPRAR AGORA<small>Pague na entrega</small></a>
+      </div>
+      <div class="preco-card destaque">
+        <div class="badge-popular">⭐ MAIS VENDIDO</div>
+        <div class="preco-potes">2 Potes</div>
+        <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1756257961375_design-sem-nome-85.png.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="2 potes AmazoLé">
+        <div class="preco-duracao">Tratamento 60 dias</div>
+        <div class="preco-antigo">De R$279,99</div>
+        <div class="preco-valor">R$197,00</div>
+        <div class="preco-parcelas">Melhor custo-benefício</div>
+        <a href="https://pay.braip.co/checkout/pla2kz0x/che9vjep" class="btn-cta">QUERO ESSE KIT<small>Resultado garantido</small></a>
+      </div>
+      <div class="preco-card">
+        <div class="preco-potes">3 Potes</div>
+        <img src="https://firebasestorage.googleapis.com/v0/b/voltk-homologacao.appspot.com/o/compressed_1755874023098_design-sem-nome-78.png.webp?alt=media&token=vtk_Eabq0ollY8QXVIuq0aFiURgLiA32" alt="3 potes AmazoLé">
+        <div class="preco-duracao">Tratamento 90 dias</div>
+        <div class="preco-antigo">De R$359,99</div>
+        <div class="preco-valor">R$247,00</div>
+        <div class="preco-parcelas">Resultado completo</div>
+        <a href="https://pay.braip.co/checkout/plavge0g/che9vjep" class="btn-cta">COMPRAR AGORA<small>Pague na entrega</small></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GARANTIA -->
+<section class="garantia">
+  <div class="garantia-inner">
+    <div class="garantia-icon">🛡️</div>
+    <h2>Garantia de 90 dias ou seu dinheiro de volta</h2>
+    <p>Testou, não gostou ou não viu resultado em até 90 dias? Devolvemos 100% do seu dinheiro sem burocracia. Você não corre nenhum risco.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="faq-bg">
+  <div class="faq-inner">
+    <span class="section-label" style="display:block;margin-bottom:10px;">Dúvidas frequentes</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:24px;">Perguntas frequentes</h2>
+    <div class="faq-item">
+      <h3>Quando vou ver os primeiros resultados?</h3>
+      <p>Os primeiros resultados são visíveis após 30 a 40 dias de uso contínuo, usando de 2 a 3 vezes por semana.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Como usar o produto?</h3>
+      <p>Aplique na pele úmida, massageie suavemente nas áreas manchadas, deixe agir por alguns minutos e enxágue. Recomenda-se uso de protetor solar nas áreas tratadas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Qual é o prazo de entrega?</h3>
+      <p>Entre 2 e 10 dias úteis dependendo da sua região. Você recebe código de rastreamento após o pedido.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Posso devolver se não gostar?</h3>
+      <p>Sim! Você tem 90 dias de garantia total. Se não ver resultado, devolvemos 100% do valor pago.</p>
+    </div>
+    <div class="faq-item">
+      <h3>É seguro para pele sensível?</h3>
+      <p>Sim. A fórmula não contém ácidos agressivos e é indicada para todos os tipos de pele, inclusive as mais sensíveis.</p>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="#precos" class="btn-cta">VER KITS E PREÇOS<small>Frete Grátis + Pague na Entrega</small></a>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div style="background:var(--pink);padding:50px 20px;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.5rem,5vw,2.2rem);margin-bottom:12px;">Sua pele mais clara começa hoje</h2>
+  <p style="color:rgba(255,255,255,0.85);margin-bottom:28px;font-size:1rem;">Junte-se a mais de 4.800 mulheres que já transformaram a relação com o próprio corpo.</p>
+  <a href="#precos" class="btn-cta" style="background:#fff;color:var(--pink);box-shadow:0 8px 28px rgba(0,0,0,0.2);">
+    ESCOLHER MEU KIT AGORA
+    <small style="color:var(--muted);">Frete Grátis + Pague na Entrega</small>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 AmazoLé Esfoliante Clareador. Todos os direitos reservados.</p>
+  <p style="margin-top:6px;">Este produto não substitui tratamento médico. Resultados podem variar de pessoa para pessoa.</p>
+</footer>
+
+<!-- STICKY MOBILE -->
+<div class="sticky-cta">
+  <a href="#precos">🛒 QUERO CLAREAR AGORA — Pague na Entrega</a>
+</div>
+
+</body>
+</html>
